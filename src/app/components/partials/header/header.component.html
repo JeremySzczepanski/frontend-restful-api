@@ -6,7 +6,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-7 order-last order-md-first">
                     <div class="static-info text-center text-md-left">
-                        <p class="text-white">Join our showroom and get <span class="theme-color">10 % off</span> ! Coupon code : <span class="theme-color">Jstore2021</span></p>
+                        <p class="text-white">Join our showroom and get <span class="theme-color">10 % off</span> ! Coupon code : <span class="theme-color">SaleOccaz</span></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -57,7 +57,7 @@
                                     <span class="text-muted">Call us:</span>
                                 </div>
                                 <div class="phone">
-                                    <a href="tel:(+33)752152560" class="text-dark">(+33)752152560</a>
+                                    <a href="tel:(+32)473644946" class="text-dark">(+32)473644946</a>
                                 </div>
                             </div>
                         </div>
@@ -112,16 +112,16 @@
 
                     <ul class="main-menu d-flex">
 
-                        <li routerLinkActive="active"><a routerLink="/">Home</a></li>
+                      <li routerLinkActive="active"><a routerLink="/">Home</a></li>
                       <li routerLinkActive="active"><a routerLink="/shop">Shop</a></li>
 
                       <li routerLinkActive="active"><a routerLink="/add-product">Add product</a></li>
 
-                      <li routerLinkActive="active" ><a routerLink="/signin">Login</a></li>
-                      <li routerLinkActive="active" ><a  routerLink="/signup">Register</a></li>
+                      <li routerLinkActive="active" ><a routerLink="/signin" *ngIf="!isAuth" >Login</a></li>
+                      <li routerLinkActive="active" ><a  routerLink="/signup" *ngIf="!isAuth">Register</a></li>
 
 
-                      <li routerLinkActive="active"  style="color: black;cursor: pointer;"><a >Logout</a></li>
+                      <li routerLinkActive="active"  style="color: black;cursor: pointer;" *ngIf="isAuth" (click)="logout()"><a >Logout</a></li>
 
                     </ul>
 
