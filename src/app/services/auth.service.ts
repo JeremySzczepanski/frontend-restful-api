@@ -21,7 +21,7 @@ export class AuthService {
 
   initAuth(){
     if(typeof localStorage !== "undefined"){
-      const data = JSON.parse(localStorage.getItem('auth')||"");
+      const data = JSON.parse(localStorage.getItem('auth')||'null');
       console.log(data)
         if(data){
           if(data.userId && data.token){
