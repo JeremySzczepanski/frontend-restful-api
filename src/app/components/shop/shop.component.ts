@@ -12,6 +12,7 @@ export class ShopComponent implements OnInit {
 
   products: Product[] = [];
   productSub!: Subscription;
+  loading!: boolean;
   userId!: string;
 
   constructor(private productService: ProductService) { }
@@ -20,9 +21,11 @@ export class ShopComponent implements OnInit {
     this.productSub = this.productService.products$.subscribe(   //quand on fait un subscribe, il faut penser à un moment à détruire cela pour des raisons de sécurité
                                                             //et pour éviter que l'application ne plante.
       (products: Product[])=>{            //lorsqu'on écoute on peut recevoir des données (ici des produits)
+          this.loading = true;	//Pour afficher le spinner material
           this.products = products;       //on met dans produts les produits qu'on a reçu en paramètre
       },
       (err)=>{
+        this.loading = false;	//Si on est en cas d'erreur ça veut dire qu'on est pas en mesure d'afficher les produits, dans ce cas on le met à false
         console.log(err);
       }
     );
