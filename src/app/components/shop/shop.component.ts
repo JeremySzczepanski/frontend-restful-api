@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,11 +15,15 @@ export class ShopComponent implements OnInit {
   products: Product[] = [];
   productSub!: Subscription;
   loading!: boolean;
-  userId!: string;
+  userId!: string | null;
 
-  constructor(private productService: ProductService) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private productService: ProductService,
+              private auth: AuthService) { }
 
   ngOnInit(): void {                                        //Ceci nous retourne un observable, il faut donc penser à faire un subscribe
+    this.userId = this.auth.userId;
     this.productSub = this.productService.products$.subscribe(   //quand on fait un subscribe, il faut penser à un moment à détruire cela pour des raisons de sécurité
                                                             //et pour éviter que l'application ne plante.
       (products: Product[])=>{            //lorsqu'on écoute on peut recevoir des données (ici des produits)
