@@ -8,9 +8,11 @@
                     <div class="card-body">
                         <div class="product-thumbnail position-relative">
                             <span class="badge badge-danger top-right">New</span>
-                            <a>
-                                <img class="first-img" width="420" src="product.image" alt="thumbnail">
-                            </a>
+
+                            <div [routerLink]="['/single-product', product._id]">
+                                <img class="first-img" width="420" [src]="product.image" alt="thumbnail">
+                            </div>
+
                             <!-- product links -->
                             <ul class="product-links d-flex justify-content-center">
 
