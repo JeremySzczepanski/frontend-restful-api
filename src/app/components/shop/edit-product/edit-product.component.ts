@@ -193,6 +193,38 @@ export class EditProductComponent implements OnInit {
 
 
   onSubmit(){
+    this.loading= true;
+    const product = new Product();
+
+    if(this.product.userId !== this.userId){            //Couche de sécurité supplémentaire pour confirmer à nouveau qu'il s'agit du bon userId
+      console.log("You can't edit this product !")
+      return this.router.navigate(['/not-found']);
+    }
+
+    product._id = this.product._id;
+    product.name = this.productForm.get('name')?.value;
+    product.description = this.productForm.get('description')?.value;
+    product.price = this.productForm.get('price')?.value * 100;
+    product.stock = this.productForm.get('stock')?.value;
+    product.image = '';
+    // product.userId = this.userId;
+    product.userId = this.product.userId;
+
+    //La méthode updateProduct prend en argument: id, product, image
+    this.productService.updateProduct(product._id, product, this.productForm.get('image')?.value)
+    .then(
+      ()=>{
+        this.productForm.reset();
+        this.loading = false;
+        this.router.navigate(['/shop']);
+      }
+    )
+    .catch(
+      (err)=>{
+          this.loading = false;
+          this.errorMessage = err.message;
+      }
+    );
 
   }
 
