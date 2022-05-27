@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Cart } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -16,11 +18,13 @@ export class ShopComponent implements OnInit {
   productSub!: Subscription;
   loading!: boolean;
   userId!: string | null;
+  cart: Cart = new Cart();
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private productService: ProductService,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {                                        //Ceci nous retourne un observable, il faut donc penser à faire un subscribe
     this.userId = this.auth.userId;
@@ -40,6 +44,11 @@ export class ShopComponent implements OnInit {
 
   ngOnDestroy(): void {                                 //Ici on détruit le subscribe
     this.productSub.unsubscribe();
+  }
+
+  addToCart(product: Product){
+    this.cartService.addToCart(product);
+    console.log(this.cartService.cart);
   }
 
 }

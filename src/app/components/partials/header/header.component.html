@@ -66,12 +66,12 @@
                             <ul class="d-flex">
 
                                 <li class="mr-0 cart-block position-relative">
-                                    <a class="offcanvas-toggle" routerLink="/card">
+                                    <a class="offcanvas-toggle" routerLink="/cart">
                                         <span class="position-relative">
                                             <i class="icon-bag"></i>
-                                            <span class="badge cbdg1">7</span>
+                                            <span class="badge cbdg1" *ngIf="resume">{{ resume.quantity }}</span>
                                         </span>
-                                        <span class="cart-total position-relative" >$199</span>
+                                        <span class="cart-total position-relative" *ngIf="resume" >{{ resume.costTTC/100 | currency:'EUR' }}</span>
                                     </a>
                                 </li>
                                 <!-- cart block end -->
@@ -104,7 +104,7 @@
     <!-- header-middle end -->
 
     <!-- header bottom start -->
-    <nav class="header-bottom theme1 d-none d-lg-block">
+    <nav class="header-bottom theme4 d-none d-lg-block">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-10 offset-lg-2 d-flex flex-wrap align-items-center position-relative">

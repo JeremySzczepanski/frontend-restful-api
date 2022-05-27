@@ -10,7 +10,7 @@
                             <span class="badge badge-danger top-right">New</span>
 
                             <div [routerLink]="['/single-product', product._id]">
-                                <img class="first-img" width="420" [src]="product.image" alt="thumbnail">
+                                <img class="first-img" width="420" height="250" [src]="product.image" alt="thumbnail">
                             </div>
 
                             <!-- product links -->
@@ -38,8 +38,13 @@
 
                                 <button class="pro-btn" *ngIf="userId === product.userId" [routerLink]="['/edit-product', product._id]"><i class="ion-android-create"></i></button>
 
-                                <button class="pro-btn" data-toggle="modal" data-target="#add-to-cart"><i class="icon-basket"></i></button>
+                                <button class="pro-btn" data-toggle="modal" *ngIf="userId === product.userId" [attr.data-target]="'#delete-product-'+product._id"><i class="ion-android-remove"></i></button>
+
+                                <button class="pro-btn" (click)="addToCart(product)" data-toggle="modal" data-target="#add-to-cart"><i class="icon-basket"></i></button>
                             </div>
+
+                            <node-delete-product-modal [product]='product' *ngIf="userId === product.userId"></node-delete-product-modal>
+
                         </div>
                     </div>
                 </div>
