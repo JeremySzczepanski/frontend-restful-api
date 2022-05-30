@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'node-add-to-cart-modal',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-to-cart-modal.component.css']
 })
 export class AddToCartModalComponent implements OnInit {
+
+  @Input()
+  product!: Product;
+  products!: Product[];
 
   constructor() { }
 

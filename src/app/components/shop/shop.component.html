@@ -17,7 +17,7 @@
                             <ul class="product-links d-flex justify-content-center">
 
                                 <li>
-                                    <a href="#" data-toggle="modal" data-target="#quick-view" [routerLink]="['/single-product', product._id]">
+                                    <a href="#" data-toggle="modal" [attr.data-target]="'#quick-view-modal-'+product._id">
                                         <span data-toggle="tooltip" data-placement="bottom" title="Quick view" class="icon-magnifier"></span>
                                     </a>
                                 </li>
@@ -53,3 +53,4 @@
         </div>
     </div>
 </div>
+<node-quick-view-modal [products]="products"></node-quick-view-modal>
