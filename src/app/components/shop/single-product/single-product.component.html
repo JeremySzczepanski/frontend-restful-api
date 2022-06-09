@@ -45,7 +45,7 @@
                         <div class="product-count style d-flex flex-column flex-sm-row mt-30 mb-30">
 
                             <div>
-                                <button class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" (click)="addToCart(product)" data-toggle="modal" [attr.data-target]="'add-to-cart-modal-'+product._id">
+                                <button class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" (click)="addToCart(product)" data-toggle="modal" [attr.data-target]="'#add-to-cart-modal-'+product._id">
                                   <span class="mr-2"><i class="ion-android-add"></i></span>
                                   Add to cart
                               </button>
@@ -205,4 +205,4 @@
         </div>
     </div>
 </section>
-<node-add-to-cart-modal></node-add-to-cart-modal>
+

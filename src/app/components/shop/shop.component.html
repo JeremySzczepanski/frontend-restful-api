@@ -38,9 +38,9 @@
 
                                 <button class="pro-btn" *ngIf="userId === product.userId" [routerLink]="['/edit-product', product._id]"><i class="ion-android-create"></i></button>
 
-                                <button class="pro-btn" data-toggle="modal" *ngIf="userId === product.userId" [attr.data-target]="'#delete-product-'+product._id"><i class="ion-android-remove"></i></button>
+                                <button class="pro-btn" data-toggle="modal" *ngIf="userId === product.userId" [attr.data-target]="'#delete-product-'+product._id"><i class="ion-android-delete"></i></button>
 
-                                <button class="pro-btn" (click)="addToCart(product)" data-toggle="modal" data-target="#add-to-cart"><i class="icon-basket"></i></button>
+                                <button class="pro-btn" (click)="addToCart(product)" data-toggle="modal" [attr.data-target]="'#add-to-cart-modal-'+product._id"><i class="icon-basket"></i></button>
                             </div>
 
                             <node-delete-product-modal [product]='product' *ngIf="userId === product.userId"></node-delete-product-modal>
@@ -54,3 +54,4 @@
     </div>
 </div>
 <node-quick-view-modal [products]="products"></node-quick-view-modal>
+<node-add-to-cart-modal [products]="products"></node-add-to-cart-modal>

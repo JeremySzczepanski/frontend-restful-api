@@ -2,8 +2,7 @@
 
 /*-----------------------------------------------------------------------------------
     Description: Site Web Ecommerce
-    Author: AKPOLI Espero
-    Author URL: espero-soft.com
+    Author: Jeremy Szczepanski
     Version: 1.0.0
 -----------------------------------------------------------------------------------
 /* local fonts */
@@ -6198,6 +6197,10 @@ footer::after {
     }
 }
 
+.imgcart{
+     max-height: 150px;
+}
+
 .whish-list-section .title {
     font-family: "Gilroy-Bold ☞";
     font-weight: 700;
@@ -6207,13 +6210,22 @@ footer::after {
 }
 
 .whish-list-section .table .thead-light th {
-    background-color: #f33535;
+    background-color: #4682B4;
+    /* background-color: #f33535; */
     border-color: transparent;
     text-transform: capitalize;
     font-family: "Gilroy-Bold ☞";
-    font-weight: 700;
+    font-weight: 800;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+.whish-list-section .table .thead-light th:first-child {
+    border-radius:20px 0 0 0;
+}
+
+.whish-list-section .table .thead-light th:last-child {
+  border-radius:0 20px  0 0;
 }
 
 .whish-list-section .table td,
@@ -6618,8 +6630,10 @@ span.required {
 
 .table .thead-light th {
     color: #495057;
-    background-color: #e9ecef;
+    background-color: #0d6efd;
+    /* background-color: #e9ecef; */
     border-color: #dee2e6;
+
 }
 
 .account-details-form input[type="text"],

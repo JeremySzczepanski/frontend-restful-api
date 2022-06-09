@@ -54,16 +54,33 @@ export class CartService {
 		//comme on incrémente l'idéal serait d'initialiser:
 		this.cart.resume = {quantity: 0, costHT: 0, costTaxe: 0, costTTC: 0};
 
-		//Puis on parcourt la boucle:
-		this.cart.items.forEach(item => {
-			this.cart.resume.quantity += item.quantity;
-			this.cart.resume.costHT += item.quantity*item.product.price;
-			this.cart.resume.costTaxe += this.cart.resume.costHT*this.tva;			//On peut mettre la TVA directement dans la partie environment.
-			//this.cart.resume.costTTC += this.cart.resume.costHT + this.cart.resume.costHT*this.tva;		//On peut factoriser:
-			this.cart.resume.costTTC += this.cart.resume.costHT*(1 + this.tva);
-		})
-    this.emitCart();
-	}
+
+
+              //******Original****** */
+
+	// 	//Puis on parcourt la boucle:
+	// 	this.cart.items.forEach(item => {
+	// 		this.cart.resume.quantity += item.quantity;
+	// 		this.cart.resume.costHT += item.quantity*item.product.price;
+	// 		this.cart.resume.costTaxe += this.cart.resume.costHT*this.tva;			//On peut mettre la TVA directement dans la partie environment.
+	// 		//this.cart.resume.costTTC += this.cart.resume.costHT + this.cart.resume.costHT*this.tva;		//On peut factoriser:
+	// 		this.cart.resume.costTTC += this.cart.resume.costHT*(1 + this.tva);item.quantity*item.product.price;
+	// 	})
+  //   this.emitCart();
+	// }
+
+              //******Changement du TTC****** */
+
+  		//Puis on parcourt la boucle:
+      this.cart.items.forEach(item => {
+        this.cart.resume.quantity += item.quantity;
+        this.cart.resume.costTTC += item.quantity*item.product.price;
+        this.cart.resume.costTaxe += this.cart.resume.costTTC*this.tva;			//On peut mettre la TVA directement dans la partie environment.
+        //this.cart.resume.costTTC += this.cart.resume.costHT + this.cart.resume.costHT*this.tva;		//On peut factoriser:
+        this.cart.resume.costHT += this.cart.resume.costTTC/(1 + this.tva);item.quantity*item.product.price;
+      })
+      this.emitCart();
+    }
 
 
   removeOne(product: Product){

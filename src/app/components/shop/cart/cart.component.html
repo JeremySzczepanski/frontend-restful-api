@@ -7,7 +7,7 @@
               <div class="table-responsive">
                   <table class="table">
                       <thead class="thead-light">
-                          <tr>
+                          <tr class="radius">
                               <th class="text-center" scope="col">Product Image</th>
                               <th class="text-center" scope="col">Product Name</th>
                               <th class="text-center" scope="col">Stock Status</th>
@@ -22,7 +22,7 @@
                       <tbody>
                           <tr *ngFor="let item of items">
                               <th class="text-center" scope="row">
-                                  <img [src]="item.product.image" alt="img">
+                                  <img class="imgcart" [src]="item.product.image" alt="img">
                               </th>
 
                               <td class="text-center">
@@ -61,7 +61,7 @@
 
                               <td class="text-center">
                                   <span class="whish-list-price">
-				                        {{ (item.product.price*1.21/100 * item.quantity) | currency:"EUR" }}
+				                        {{ (item.product.price/100 * item.quantity) | currency:"EUR" }}
                                   </span>
                               </td>
 

@@ -16,6 +16,8 @@ export class SingleProductComponent implements OnInit {
 
 
 
+
+
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private router: Router,
