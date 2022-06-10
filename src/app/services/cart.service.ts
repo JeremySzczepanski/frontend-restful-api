@@ -9,14 +9,26 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class CartService {
-  items: Item[]=[];
+  items!: Item[];
   resume!: {quantity: number, costHT: number, costTaxe: number, costTTC: number};
   cart: Cart = new Cart();
   tva = environment.tva/100;
   cart$ = new Subject<Cart>();
 
 
-  constructor() { }
+
+  constructor() {
+    this.initCart();
+   }
+
+  initCart(){
+    if(typeof(localStorage) !== 'undefined'){
+      const cart = JSON.parse(localStorage.getItem('cart')!);
+      this.cart = cart ? cart: new Cart();
+    }else{
+      this.cart = new Cart();
+    }
+  }
 
   emitCart(){
     this.cart$.next(this.cart);
@@ -80,6 +92,12 @@ export class CartService {
         this.cart.resume.costHT += this.cart.resume.costTTC/(1 + this.tva);item.quantity*item.product.price;
       })
       this.emitCart();
+
+      //stockage des données (cart) dans le localStorage
+      if(typeof(localStorage) !== "undefined"){
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+      }
+
     }
 
 
