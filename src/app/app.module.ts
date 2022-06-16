@@ -23,6 +23,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './components/home/home.component';
+import { HomeSliderComponent } from './components/home/home-slider/home-slider.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HomeComponent } from './components/home/home.component';
     QuickViewModalComponent,
     AddToCartModalComponent,
     DeleteProductModalComponent,
-    HomeComponent
+    HomeComponent,
+    HomeSliderComponent
   ],
   imports: [
     BrowserModule,

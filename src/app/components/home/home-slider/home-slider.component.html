@@ -1,0 +1,66 @@
+
+<!-- Carousel fonctionnel -->
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="1000">  <!--carousel-fade pour faire une transition fade entre les différents sliders-->
+  <ol class="carousel-indicators">
+       <li data-target="#carouselExampleIndicators" *ngFor="let li of slider;let index = index" [attr.data-slide-to]="index"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item"  *ngFor="let slide of slider; let i = index" [ngClass]="{'active': i == 0}">
+          <img class="d-block w-100" [src]="slide.imageUrl">
+
+          <div class="container">
+              <h1>Exemple HeadLine</h1>
+              <p>Retrouvez une grande selection de disque originaux</p>
+              <a href="#" class="btn btn-lg btn-primary">Sign Up today</a>
+          </div>
+
+
+    </div>
+  </div>
+
+  <a (click)="handleChangeImage(-1)" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+  </a>
+  <a (click)="handleChangeImage(1)" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+<!-- Carousel fonctionnel mais pas les indicators -->
+<!--  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="1000">
+          <div class="overlay-image"
+            [ngStyle]="{'background-image':'url('+slider[currentIndex]?.imageUrl+')'}">
+
+            <div class="container">
+              <h1>Exemple HeadLine</h1>
+              <p>Retrouvez une grande selection de disque originaux</p>
+              <a href="#" class="btn btn-lg btn-primary">Sign Up today</a>
+            </div>
+          </div>
+    </div>
+
+      <a (click)="handleChangeImage(-1)" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a (click)="handleChangeImage(1)" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+
+  </div> -->

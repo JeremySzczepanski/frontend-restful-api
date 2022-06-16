@@ -21,6 +21,7 @@ export class CartService {
     this.initCart();
    }
 
+  //Check du localStorage afin de ne pas perdre le panier lors de l'actualisation du navigateur
   initCart(){
     if(typeof(localStorage) !== 'undefined'){
       const cart = JSON.parse(localStorage.getItem('cart')!);
