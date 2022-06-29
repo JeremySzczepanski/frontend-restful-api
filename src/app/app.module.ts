@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './components/home/home.component';
 import { HomeSliderComponent } from './components/home/home-slider/home-slider.component';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeSliderComponent } from './components/home/home-slider/home-slider.c
     AddToCartModalComponent,
     DeleteProductModalComponent,
     HomeComponent,
-    HomeSliderComponent
+    HomeSliderComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

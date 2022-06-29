@@ -6215,9 +6215,9 @@ footer::after {
     border-color: transparent;
     text-transform: capitalize;
     font-family: "Gilroy-Bold ☞";
-    font-weight: 800;
+    font-weight: 600;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .whish-list-section .table .thead-light th:first-child {
@@ -6226,6 +6226,18 @@ footer::after {
 
 .whish-list-section .table .thead-light th:last-child {
   border-radius:0 20px  0 0;
+}
+
+.whish-list-section .table .tfoot th{
+  background-color: #4682B4;
+  border-color: transparent;
+}
+.whish-list-section .table .tfoot th:first-child {
+  border-radius:0 0 0 20px ;
+}
+
+.whish-list-section .table .tfoot th:last-child {
+  border-radius:0 0 20px 0;
 }
 
 .whish-list-section .table td,

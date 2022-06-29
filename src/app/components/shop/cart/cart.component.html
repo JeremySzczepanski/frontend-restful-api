@@ -1,4 +1,9 @@
 <node-header-page page="Cart"></node-header-page>
+
+<div class="flex-container">
+
+
+
 <section class="whish-list-section theme1 pt-80 pb-80">
   <div class="container" *ngIf="items.length">
       <div class="row">
@@ -16,10 +21,11 @@
                               <th class="text-center" scope="col">TVA</th>
                               <th class="text-center" scope="col">Price TVAC</th>
                               <th class="text-center" scope="col">action</th>
-
                           </tr>
+
+
                       </thead>
-                      <tbody>
+                      <tbody class="tbody">
                           <tr *ngFor="let item of items">
                               <th class="text-center" scope="row">
                                   <img class="imgcart" [src]="item.product.image" alt="img">
@@ -72,6 +78,38 @@
                           </tr>
 
                       </tbody>
+
+                      <tfoot class="tfoot">
+                          <tr class="radius">
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="text-center" scope="col"></th>
+                              <th class="sous-total" scope="col">
+
+                      <!-- Total Panier et Bouton Checkout -->
+                                <hr>
+                                  <div class="tfoot-total">
+                                    <div class="checkout">
+                                      <div class="total">
+                                        <div class="row">
+                                          <div class="Subtotal">Sub-Total</div>
+                                          <div class="items" *ngIf="resume">{{ resume.quantity }} items</div>
+                                        </div>
+                                      </div>
+                                        <div class="total-amount">{{ resume.costTTC/100 | currency:'EUR' }}</div>
+                                    </div>
+                                      <button class="button">Checkout</button>
+                                  </div>
+                      <!-- End Total Panier et Bouton Checkout -->
+
+                              </th>
+                          </tr>
+                      </tfoot>
+
                   </table>
               </div>
           </div>
@@ -80,8 +118,72 @@
           </div>
       </div>
   </div>
+
+  <!-- Empty Cart Button -->
   <div class="container" *ngIf="!items.length">
       <h3 class="title mb-30 pb-25 text-capitalize">Your cart is empty</h3>
       <a routerLink="/shop" class="btn btn-block theme-btn--dark1 btn--lg mt-70">Go back to shop</a>
   </div>
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Buy Now Modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Résumé de commande</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body row">
+
+        <div class="col-8 col-sm-6">
+          <tr *ngFor="let item of items" class="items">
+            <td class="text-center">
+            <span class="whish-title">{{ item.product.name }}</span>
+            </td>
+          </tr>
+        </div>
+
+        <div class="col-4 col-sm-6">
+          <tr class="text-center" *ngFor="let item of items" class="items">
+            <td class="text-center">
+            <span class="whish-title">{{ (item.product.price/100 * item.quantity) | currency:"EUR" }}</span>
+            </td>
+          </tr>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 ml-auto">Total: {{ resume.costTTC/100 | currency:'EUR' }}</div>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Valider ma commande</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </section>
+
+</div>
+
+
+

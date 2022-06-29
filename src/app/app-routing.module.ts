@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { CheckoutComponent } from './components/shop/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { AddProductComponent } from './components/shop/add-product/add-product.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
 	{ path: 'single-product/:id', component: SingleProductComponent },
 	{ path: 'edit-product/:id', component: EditProductComponent, canActivate: [AuthGuard] },
 	{ path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent},
 	{ path: 'not-found', component: NotFoundComponent },
 	{ path: '**', component: NotFoundComponent },
 ];
