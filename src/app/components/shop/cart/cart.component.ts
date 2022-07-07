@@ -23,6 +23,10 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }         //on injecte cartService qui permet de manipuler le panier
 
   ngOnInit(): void {
+    window.scrollTo({
+      top: 530,
+      behavior: 'smooth'
+    })
     this.cartService.cart$.subscribe(
       (cart: Cart)=>{
         this.cart = cart;
